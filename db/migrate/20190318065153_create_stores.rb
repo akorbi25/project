@@ -7,6 +7,8 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :zip
       t.string :phone
+      t.float :latitude
+      t.float :longitude
       t.boolean :active
 
       t.timestamps
