@@ -20,6 +20,23 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1/edit
   def edit
   end
+  
+  def for_store
+    @assignments = Assignment.for_store(2)
+  end
+
+  def for_employee
+    @assignments = Assignment.for_employee(1)
+  end
+  
+  def for_pay_level
+    @assignments = Assignment.for_pay_level(3)
+  end
+  
+  def for_role
+    @assignments = Assignment.for_role("manager")
+  end
+
 
   # POST /assignments
   # POST /assignments.json

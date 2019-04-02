@@ -1,39 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <h5>First name:</h5>
   <%= @employee.first_name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <h5>Last name:</h5>
   <%= @employee.last_name %>
 </p>
 
 <p>
-  <strong>Ssn:</strong>
+  <h5>Ssn:</h5>
   <%= @employee.ssn %>
 </p>
 
 <p>
-  <strong>Date of Birth:</strong>
+  <h5>Date of Birth:</h5>
   <%= @employee.date_of_birth %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <h5>Phone:</h5>
   <%= @employee.phone %>
 </p>
 
 <p>
-  <strong>Role:</strong>
+  <h5>Role:</h5>
   <%= @employee.role %>
 </p>
 
 <p>
-  <strong>Active:</strong>
+  <h5>Active:</h5>
   <%= @employee.active %>
 </p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+</br>
+<%= link_to 'Edit', edit_employee_path(@employee), class: 'button'%>
+<%= link_to 'Back', employees_path, class: 'button' %>

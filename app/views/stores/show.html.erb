@@ -1,39 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <h5>Name:</h5>
   <%= @store.name %>
 </p>
 
 <p>
-  <strong>Street:</strong>
+  <h5>Street:</h5>
   <%= @store.street %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <h5>City:</h5>
   <%= @store.city %>
 </p>
 
 <p>
-  <strong>State:</strong>
+  <h5>State:</h5>
   <%= @store.state %>
 </p>
 
 <p>
-  <strong>Zip:</strong>
+  <h5>Zip:</h5>
   <%= @store.zip %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <h5>Phone:</h5>
   <%= @store.phone %>
 </p>
 
 <p>
-  <strong>Active:</strong>
+  <h5>Active:</h5>
   <%= @store.active %>
 </p>
 
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+</br>
+<%= link_to 'Edit', edit_store_path(@store), class: 'button'%>
+<%= link_to 'Back', stores_path, class: 'button' %>

@@ -20,6 +20,16 @@ class EmployeesController < ApplicationController
     @employees = Employee.inactive
   end
   
+  def managers
+    @employees = Employee.managers
+  end
+  def regulars
+    @employees = Employee.regulars
+  end
+  def admins
+    @employees = Employee.admins
+  end
+  
   # GET /employees/new
   def new
     @employee = Employee.new

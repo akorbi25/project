@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Store:</strong>
+  <h5>Store:</h5>
   <%= @assignment.store_id %>
 </p>
 
 <p>
-  <strong>Employee:</strong>
+  <h5>Employee:</h5>
   <%= @assignment.employee_id %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
+  <h5>Start date:</h5>
   <%= @assignment.start_date %>
 </p>
 
 <p>
-  <strong>End date:</strong>
+  <h5>End date:</h5>
   <%= @assignment.end_date %>
 </p>
 
 <p>
-  <strong>Pay level:</strong>
+  <h5>Pay level:</h5>
   <%= @assignment.pay_level %>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+</br>
+<%= link_to 'Edit', edit_assignment_path(@assignment), class: 'button'%>
+<%= link_to 'Back', assignments_path, class: 'button' %>

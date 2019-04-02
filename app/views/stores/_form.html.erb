@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_field :state %>
+    <%= form.select :state, [ 'PA', 'OH', 'WV' ], :prompt => 'Select One' %>
   </div>
 
   <div class="field">
@@ -47,7 +47,7 @@
   </div>
   </br>
 
-  <div class="actions">
+  <div class="button">
     <%= form.submit %>
   </div>
 <% end %>

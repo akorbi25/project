@@ -38,7 +38,8 @@
 
   <div class="field">
     <%= form.label :role %>
-    <%= form.text_field :role %>
+    <%= form.select :role, [ 'employee', 'manager', 'admin' ], :prompt => 'Select One' %>
+
   </div>
 
   <div class="field">
@@ -47,7 +48,7 @@
   </div>
   </br>
 
-  <div class="actions">
+  <div class="button">
     <%= form.submit %>
   </div>
 <% end %>

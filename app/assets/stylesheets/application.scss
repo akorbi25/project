@@ -1,21 +1,79 @@
-$primary-color: #FFC107;
+$primary-color: pink;
 h2 { 
   font-size: 40px;
-  color: pink;
+  color: #d12368;
   font-weight: bold;
   font-family: "Comic Sans MS", cursive, sans-serif;
 
   
 }
+h5 { 
+  font-size: 25px;
+  color: #d12368;
+  font-weight: bold;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 
-body{
-background-color: #fffbed;  
+  
 }
+.button {
+  font: bold 11px Arial;
+  background-color: pink;
+  color: #d12368;
+  padding: 6px 10px 6px 10px;
+
+}
+
+table { border-collapse: collapse; 
+   overflow: auto;
+ }
+
+.field {
+  
+      font-size: 20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+
+    color: #6D6968;
+}
+ th
+        {
+        	background-color: pink;
+        	color: #d12368;
+        	font-weight:normal;
+        	font-family: Arial, Helvetica, sans-serif;
+        	 text-align: center;
+        }
+        
+ 
+        
+.dropdown-button{
+    color: #d12368;
+
+}
+    
+.wrapper {
+	background: #fcf1d4;
+	padding: 30px;
+  opacity: 0.9;
+}
+
+
+
+body {
+  margin: 0;
+  background: url("https://previews.123rf.com/images/annagolant/annagolant1707/annagolant170700096/82186694-seamless-pattern-with-ice-cream-cute-background-in-vintage-retro-style-seamless-vector-illustration-.jpg");
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 p {
     font-size: 20px;
     font-family: "Comic Sans MS", cursive, sans-serif;
 
     color: #6D6968;
 }
+
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";

@@ -3,16 +3,31 @@
 <ul id="dropdown1" class="dropdown-content">
  <li><%= link_to "List Stores", stores_path %></li>
  <li><%= link_to "Add Store", new_store_path %></li>
+  <li><%= link_to "Active Stores", active_stores_path %></li>
+ <li><%= link_to "Inactive Stores", inactive_stores_path %></li>
+
 </ul>
 
 <ul id="dropdown2" class="dropdown-content">
  <li><%= link_to "List Employees", employees_path %></li>
  <li><%= link_to "Add an Employee", new_employee_path %></li>
+  <li><%= link_to "Active Employees", active_employees_path %></li>
+ <li><%= link_to "Inactive Employees", inactive_employees_path %></li>
+ <li><%= link_to "Admins", admins_path %></li>
+ <li><%= link_to "Managers", managers_path %></li>
+ <li><%= link_to "Employees", regulars_path %></li>
+
+
 </ul>
 
 <ul id="dropdown3" class="dropdown-content">
  <li><%= link_to "List Assignments", assignments_path %></li>
  <li><%= link_to "Add an Assignment", new_assignment_path %></li>
+  <li><%= link_to "Store Assignments", for_store_path %></li>
+ <li><%= link_to "Employee Assignments", for_employee_path %></li>
+ <li><%= link_to "Role Assignments", for_role_path %></li>
+ <li><%= link_to "Pay Level Assignments", for_pay_level_path %></li>
+
 </ul>
 <nav>
  <div class="nav-wrapper">
