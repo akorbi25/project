@@ -11,7 +11,15 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
   end
+  
+  def active
+    @employees = Employee.active
+  end
 
+  def inactive
+    @employees = Employee.inactive
+  end
+  
   # GET /employees/new
   def new
     @employee = Employee.new

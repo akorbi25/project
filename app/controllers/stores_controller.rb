@@ -16,6 +16,14 @@ class StoresController < ApplicationController
   def new
     @store = Store.new
   end
+  
+  def active 
+    @stores = Store.active
+  end 
+  
+  def inactive 
+    @stores = Store.inactive
+  end
 
   # GET /stores/1/edit
   def edit
