@@ -3,4 +3,8 @@ Rails.application.routes.draw do
     resources :stores
     resources :employees
     resources :assignments
+    
+    get 'home' => 'home#home', as: :home
+    get 'about' => 'home#about', as: :about
+    get 'contact' => 'home#contact', as: :contact
 end

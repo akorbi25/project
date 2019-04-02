@@ -26,10 +26,10 @@
     <%= form.text_field :ssn %>
   </div>
 
-  <div class="field">
-    <%= form.label :birth_of_date %>
-    <%= form.date_select :birth_of_date %>
-  </div>
+ <div class="field">
+ <%= form.label :date_of_birth %>
+ <%= form.text_field :date_of_birth, class: "datepicker", :value =>(form.object.date_of_birth.to_date if form.object.date_of_birth != nil)%>
+ </div>
 
   <div class="field">
     <%= form.label :phone %>
@@ -42,9 +42,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :active %>
     <%= form.check_box :active %>
+    <%= form.label :active %>
   </div>
+  </br>
 
   <div class="actions">
     <%= form.submit %>

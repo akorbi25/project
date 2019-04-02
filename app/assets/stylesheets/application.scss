@@ -1,2 +1,17 @@
 $primary-color: #FFC107;
+h2 { 
+  font-size: 40px;
+  color: pink;
+  font-weight: bold;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+
+  
+}
+p {
+    font-size: 20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+
+    color: #6D6968;
+}
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize";
