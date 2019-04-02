@@ -28,7 +28,7 @@
 
  <div class="field">
  <%= form.label :date_of_birth %>
- <%= form.text_field :date_of_birth, class: "datepicker", :value =>(form.object.date_of_birth.to_date if form.object.date_of_birth != nil)%>
+ <%= form.text_field :date_of_birth, class: "datepicker", :value =>(form.object.date_of_birth.strftime('%B %d, %Y') if form.object.date_of_birth != nil)%>
  </div>
 
   <div class="field">
