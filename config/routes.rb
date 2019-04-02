@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get 'for_employee' => 'assignments#for_employee', as: :for_employee
     get 'for_pay_level' => 'assignments#for_pay_level', as: :for_pay_level
     get 'for_role' => 'assignments#for_role', as: :for_role
+    get 'current' => 'assignments#past', as: :current
+    get 'past' => 'assignments#current', as: :past
+
 
 
 

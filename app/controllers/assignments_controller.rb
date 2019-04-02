@@ -36,6 +36,15 @@ class AssignmentsController < ApplicationController
   def for_role
     @assignments = Assignment.for_role("manager")
   end
+  
+  def current
+    @assignments = Assignment.current
+  end
+  def past
+    @assignments = Assignment.past
+  end
+  
+  
 
 
   # POST /assignments
