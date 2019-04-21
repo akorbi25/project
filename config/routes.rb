@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :shift_jobs
+  resources :shifts
+  resources :jobs
+  resources :store_flavors
+  resources :flavors
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :stores
     resources :employees
@@ -20,8 +26,8 @@ Rails.application.routes.draw do
     get 'for_employee' => 'assignments#for_employee', as: :for_employee
     get 'for_pay_level' => 'assignments#for_pay_level', as: :for_pay_level
     get 'for_role' => 'assignments#for_role', as: :for_role
-    get 'current' => 'assignments#past', as: :current
-    get 'past' => 'assignments#current', as: :past
+    get 'current' => 'assignments#current', as: :current
+    get 'past' => 'assignments#past', as: :past
 
 
 
