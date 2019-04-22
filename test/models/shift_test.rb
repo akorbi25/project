@@ -1,11 +1,14 @@
 require 'test_helper'
 
 class ShiftTest < ActiveSupport::TestCase
-  should belong_to(:assignment)
-  should have_many(:shift_jobs)
-  should have_many(:jobs).through(:shift_jobs)
   should have_one(:employee).through(:assignment)
   should have_one(:store).through(:assignment)
+  should belong_to(:assignment)
+  should have_many(:shift_jobs)    
+
+    should have_many(:jobs).through(:shift_jobs)
+
+
   
   should validate_presence_of(:date)
   should validate_presence_of(:start_time)
@@ -21,9 +24,12 @@ class ShiftTest < ActiveSupport::TestCase
       # create the objects I want with factories
     setup do 
       create_employees
-      create_assignments
       create_stores
+      create_assignments
       create_shifts
+      create_jobs
+      create_shift_jobs
+      
     end
     
     # and provide a teardown method as well
@@ -32,6 +38,8 @@ class ShiftTest < ActiveSupport::TestCase
       remove_assignments
       remove_stores
       remove_shifts
+      remove_jobs
+      remove_shift_jobs
     end 
     
  'should "test the scope completed" do
@@ -43,14 +51,7 @@ class ShiftTest < ActiveSupport::TestCase
       
     end'
     
-   'should "test the scope incompleted" do
-      create_jobs
-      create_shift_jobs
-      assert_equal 5, Shift.incomplete.to_a.size
-      remove_jobs
-      remove_shift_jobs
-      
-    end'
+ 
     
     should "test the scope for store" do
       assert_equal 6, Shift.for_store(@cmu.id).size

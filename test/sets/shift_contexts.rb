@@ -11,10 +11,16 @@ module Contexts
     end
 
     def create_upcoming_shifts
+        puts @ed.first_name
+        puts @cmu.name
       @assign_ed_1    = FactoryBot.create(:assignment, employee: @ed, store: @cmu, start_date: 1.month.ago.to_date, end_date: nil, pay_level: 2)
+     puts @assign_ed_1.pay_level
       @ed_shift1      = FactoryBot.create(:shift, assignment: @assign_ed_1)
+     puts @ed_shift1.date
       @ed_shift2      = FactoryBot.create(:shift, assignment: @assign_ed_1, date: 1.day.from_now.to_date)
+      puts @ed_shift2.date
       @ed_shift3      = FactoryBot.create(:shift, assignment: @assign_ed_1, date: 2.days.from_now.to_date)
+     puts @ed_shift3.date
       @ben_shift1     = FactoryBot.create(:shift, assignment: @promote_ben)
       @ben_shift2     = FactoryBot.create(:shift, assignment: @promote_ben, date: 1.day.from_now.to_date)
       @kathryn_shift1 = FactoryBot.create(:shift, assignment: @assign_kathryn)

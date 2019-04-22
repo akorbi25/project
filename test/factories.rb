@@ -46,5 +46,24 @@ FactoryBot.define do
     association :shift
     association :job
   end
+  
+  factory :user do
+    sequence :email do |n|
+      "usermail#{n}@example.com"
+    end
+    association :employee
+    password_digest { "$2a$10$o6xZS3B73OZ8GqRoM6uGPOEzZL0pOh6Yhk3qIMp2Qr2Fap.bshK5S" }
+    # password "secret"
+  end
+
+  factory :flavor do
+    name { "Chocolate" }
+    active { true }
+  end
+
+  factory :store_flavor do
+    association :store
+    association :flavor
+  end
 
 end
