@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:create, :destroy]
   resources :users
   resources :shift_jobs
   resources :shifts
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'login' => 'sessions#new', as: :login
+  get 'logout' => 'sessions#destroy', as: :logout
 
 
 

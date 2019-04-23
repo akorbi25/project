@@ -1,4 +1,10 @@
-
+    <% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+<% else %>
+  <%= link_to "Log In", login_path %>
+<% end %>
+<p id="notice"><%= notice %></p>
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
  <li><%= link_to "List Stores", stores_path %></li>

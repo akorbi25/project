@@ -11,9 +11,11 @@ class Shift < ApplicationRecord
     validate :assignment_must_be_current
    
    
-    'scope :completed, -> { joins(:shift_jobs).group(:shift_id) }'
+    scope :completed, -> { joins(:shift_jobs).group(:shift_id) }
     scope :for_store, -> (store_id) { joins(:assignment, :store).where("assignments.store_id = ?", store_id) }
-
+    scope :past, -> { where('date < ?', Date.current) }
+    scope :upcoming, -> { where('date >= ?', Date.current) }
+    
     def completed?
         self.shift_jobs.count>0 
     end

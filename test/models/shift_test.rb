@@ -6,7 +6,7 @@ class ShiftTest < ActiveSupport::TestCase
   should belong_to(:assignment)
   should have_many(:shift_jobs)    
 
-    should have_many(:jobs).through(:shift_jobs)
+  should have_many(:jobs).through(:shift_jobs)
 
 
   
@@ -27,8 +27,8 @@ class ShiftTest < ActiveSupport::TestCase
       create_stores
       create_assignments
       create_shifts
-      create_jobs
-      create_shift_jobs
+      #create_jobs
+      #create_shift_jobs
       
     end
     
@@ -38,26 +38,32 @@ class ShiftTest < ActiveSupport::TestCase
       remove_assignments
       remove_stores
       remove_shifts
-      remove_jobs
-      remove_shift_jobs
+      #remove_jobs
+      #remove_shift_jobs
     end 
     
- 'should "test the scope completed" do
+ should "test the scope completed" do
       create_jobs
       create_shift_jobs
-      assert_equal 3, Shift.completed.to_a.size
+      assert_equal 4, Shift.completed.to_a.size
       remove_jobs
       remove_shift_jobs
       
-    end'
+    end
     
- 
-    
+
     should "test the scope for store" do
-      assert_equal 6, Shift.for_store(@cmu.id).size
+      assert_equal 9, Shift.for_store(@cmu.id).size
       assert_equal 2, Shift.for_store(@oakland.id).size
     end
- 
+
+    should "have a scope for past shifts" do
+      assert_equal 4, Shift.past.size
+  end
+
+    should "have a scope for upcoming shifts" do
+      assert_equal 7, Shift.upcoming.size
+    end
  
  
   end
