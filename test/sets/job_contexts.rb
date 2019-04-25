@@ -1,17 +1,17 @@
 module Contexts
   module JobContexts
     def create_jobs
-      @cashier = FactoryBot.create(:job)
-      @mopping = FactoryBot.create(:job, name: "Mopping")
-      @making  = FactoryBot.create(:job, name: "Ice cream making")
-      @mover   = FactoryBot.create(:job, name: "Mover", active: false)
+      @cleaner = FactoryBot.create(:job)
+      @seller = FactoryBot.create(:job, name: "Seller")
+      @waiter  = FactoryBot.create(:job, name: "Waiter", active: false)
+      @cooker   = FactoryBot.create(:job, name: "Cooker")
     end
 
     def remove_jobs
-      @cashier.destroy
-      @mopping.destroy
-      @making.destroy
-      @mover.destroy
+      @cleaner.destroy
+      @seller.destroy
+      @waiter.destroy
+      @cooker.destroy
     end
   end
 end

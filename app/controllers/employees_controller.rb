@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
+    #authorize! :read, @employees
   end
 
   # GET /employees/1

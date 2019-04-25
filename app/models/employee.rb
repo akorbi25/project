@@ -53,9 +53,8 @@ class Employee < ApplicationRecord
   
   # Misc Constants
   ROLES_LIST = [['Employee', 'employee'],['Manager', 'manager'],['Administrator', 'admin']]
-  def role?
-    return self.role
-  end
+  
+
   
   # Callback code  (NOT DRY!!!)
   # -----------------------------

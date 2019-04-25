@@ -31,14 +31,13 @@ FactoryBot.define do
   factory :shift do
     association :assignment
     date { Date.today }
-    start_time { "11:00am".to_time }
-    end_time { "2:00pm".to_time }
-    notes { "This shift lasted for 12 hours and everything went fine." }
+    start_time { "9:00am".to_time }
+    notes { "This shift was for the morning session." }
   end
   
   factory :job do
-    name { "Cashier" }
-    description { "Working the cash register" }
+    name { "Cleaner" }
+    description { "Cleaning the tables and bathroom" }
     active { true }
   end
   
@@ -50,12 +49,10 @@ FactoryBot.define do
   factory :user do
     email { "ameera23@example.com" }
     association :employee
-    password_digest { "$2a$10$o6xZS3B73OZ8GqRoM6uGPOEzZL0pOh6Yhk3qIMp2Qr2Fap.bshK5S" }
-    # password "secret"
   end
 
   factory :flavor do
-    name { "Chocolate" }
+    name { "Vanilla" }
     active { true }
   end
 

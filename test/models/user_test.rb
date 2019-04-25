@@ -5,7 +5,6 @@ class UserTest < ActiveSupport::TestCase
 
   should have_secure_password
 
-  # Validating email...
   should allow_value("muneera@muneera.com").for(:email)
   should allow_value("muneera@andrew.cmu.edu").for(:email)
   should allow_value("mu_neera@muneera.org").for(:email)
@@ -32,8 +31,8 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should "shows that users are connected to an employee who is active in the system" do
-      assert @alex.active
-      assert_not_nil @alex_user
+      assert @ed.active
+      assert_not_nil @ed_user
       @someone = FactoryBot.build(:employee)
       assert @someone.valid?
 

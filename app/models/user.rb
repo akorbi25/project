@@ -5,6 +5,12 @@ class User < ApplicationRecord
     validates_format_of :email, :with => /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, :message => "is not a valid format"
     validate :employee_is_active_in_system, on: :update
 
+
+
+  def emp_role
+    return self.employee.role
+  end
+  
   private
 
   def employee_is_active_in_system

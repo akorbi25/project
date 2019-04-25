@@ -2,17 +2,17 @@ module Contexts
   module FlavorContexts
     # Context for flavors 
     def create_flavors
-      @chocolate  = FactoryBot.create(:flavor)
-      @vanilla    = FactoryBot.create(:flavor, name: "Vanilla", active: false)
-      @strawberry = FactoryBot.create(:flavor, name: "Strawberry")
-      @mint_chip  = FactoryBot.create(:flavor, name: "Mint Chocolate Chip")
+      @vanilla  = FactoryBot.create(:flavor)
+      @strawberry    = FactoryBot.create(:flavor, name: "Strawberry")
+      @mocha = FactoryBot.create(:flavor, name: "Mocha")
+      @jamoka  = FactoryBot.create(:flavor, name: "Jamoka", active: false)
     end
     
     def remove_flavors
-      @chocolate.destroy
       @vanilla.destroy
       @strawberry.destroy
-      @mint_chip.destroy
+      @mocha.destroy
+      @jamoka.destroy
     end
   end
 end

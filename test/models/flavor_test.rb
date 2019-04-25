@@ -16,21 +16,16 @@ class FlavorTest < ActiveSupport::TestCase
     end
 
     
-    # test the scope 'alphabetical'
-    should "shows that there are four flavors in in alphabetical order" do
-      assert_equal ["Chocolate", "Mint Chocolate Chip", "Strawberry", "Vanilla"], Flavor.alphabetical.map{|s| s.name}
+    should "alphabetize flavors" do
+      assert_equal ["Jamoka", "Mocha", "Strawberry", "Vanilla"], Flavor.alphabetical.map{|s| s.name}
     end
     
-    # test the scope 'active'
-    should "shows that there are 3 active flavors" do
-      assert_equal 3, Store.active.size
-      assert_equal ["Chocolate", "Strawberry", "mint_chip"], Flavor.active.alphabetical.map{|s| s.name}
+    should "return active flavors" do
+      assert_equal 3, Flavor.active.size
     end
     
-    # test the scope 'inactive'
-    should "shows that there is one inactive flavors" do
+    should "return inactive flavors" do
       assert_equal 1, Flavor.inactive.size
-      assert_equal ["Vanilla"], Flavor.inactive.alphabetical.map{|s| s.name}
     end
   end
 end

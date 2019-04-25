@@ -15,13 +15,20 @@ class Shift < ApplicationRecord
     scope :for_store, -> (store_id) { joins(:assignment, :store).where("assignments.store_id = ?", store_id) }
     scope :past, -> { where('date < ?', Date.current) }
     scope :upcoming, -> { where('date >= ?', Date.current) }
-    
+    scope :incomplete, -> { joins("LEFT JOIN shift_jobs ON shifts.id = shift_jobs.shift_id").where('shift_jobs.job_id IS NULL') }
+    scope :for_employee, ->(employee_id) { joins(:assignment, :employee).where("assignments.employee_id = ?", employee_id) }
+    scope :for_next_days, ->(day) { where('date BETWEEN ? AND ?', Date.today, day.days.from_now.to_date) }
+    scope :for_past_days, ->(day) { where('date BETWEEN ? AND ?', day.days.ago.to_date, 1.day.ago.to_date) } 
+    scope :by_store, -> { joins(:assignment, :store).order('stores.name') }
+    scope :by_employee, -> { joins(:assignment, :employee).order('employees.last_name, employees.first_name') }
+    scope :chronological, -> { order(:date, :start_time) }
+   
     def completed?
         self.shift_jobs.count>0 
     end
     
     def start_now
-        self.update_attribute(:start_time,Time.current)
+        self.update_attribute(:start_time, Time.current)
     end
     
     def end_now

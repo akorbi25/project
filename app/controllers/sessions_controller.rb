@@ -15,12 +15,15 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      if (current_user.role? :employee or current_user.role? :manager)
-        redirect_to employees_path, notice: "Logged in!"
-      else (current_user.role? :admin )
-        redirect_to home_path, notice: "Logged in!"
+      if (user.emp_role == "Employee")
+        render "about" , notice: "Logged in!"
+      elsif (user.emp_role == "Manager")
+        redirect_to employee_path , notice: "Logged in!"
+      elsif (user.emp_role == "Admin" )
+        redirect_to home_path , notice: "Logged in!"
+      else
+        redirect_to home_path , notice: "Logged in!"
       end
-      
     else
       flash.now[:alert] = "Email or password is invalid"
       render "new"

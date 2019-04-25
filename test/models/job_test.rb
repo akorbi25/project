@@ -15,20 +15,16 @@ class JobTest < ActiveSupport::TestCase
       remove_jobs
     end
         # test the scope 'alphabetical'
-    should "shows that there are 4 jobs in in alphabetical order" do
-      assert_equal ["Cashier", "Ice cream making", "Mopping", "Mover"], Job.alphabetical.map{|s| s.name}
+    should "alpahbetize jobs" do
+      assert_equal ["Cleaner", "Cooker", "Seller", "Waiter"], Job.alphabetical.map{|s| s.name}
     end
     
-    # test the scope 'active'
-    should "shows that there are 3 active job" do
+    should "reutrn active jobs" do
       assert_equal 3, Job.active.size
-      assert_equal ["Cashier", "Ice cream making", "Mopping"], Job.active.alphabetical.map{|s| s.name}
     end
     
-    # test the scope 'inactive'
-    should "shows that there is one inactive job" do
+    should "return inactive jobs" do
       assert_equal 1, Job.inactive.size
-      assert_equal ["Mover"], Job.inactive.alphabetical.map{|s| s.name}
     end
     
   end
