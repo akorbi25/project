@@ -15,7 +15,13 @@ Rails.application.routes.draw do
     get 'about' => 'home#about', as: :about
     get 'contact' => 'home#contact', as: :contact
     get 'active_stores' => 'stores#active', as: :active_stores
+    get 'active_flavors' => 'flavors#active', as: :active_flavors
+    get 'active_jobs' => 'jobs#active', as: :active_jobs
+
     get 'inactive_stores' => 'stores#inactive', as: :inactive_stores
+    get 'inactive_flavors' => 'flavors#inactive', as: :inactive_flavors
+    get 'inactive_jobs' => 'jobs#inactive', as: :inactive_jobs
+    
     get 'active_employees' => 'employees#active', as: :active_employees
     
     get 'inactive_employees' => 'employees#inactive', as: :inactive_employees

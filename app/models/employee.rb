@@ -6,7 +6,7 @@ class Employee < ApplicationRecord
   # Relationships
   has_many :assignments
   has_many :stores, through: :assignments
-  has_one :user
+  has_one :user, dependent: :destroy
   accepts_nested_attributes_for :user
   # Validations
   validates_presence_of :first_name, :last_name, :date_of_birth, :ssn, :role
@@ -54,6 +54,9 @@ class Employee < ApplicationRecord
   # Misc Constants
   ROLES_LIST = [['Employee', 'employee'],['Manager', 'manager'],['Administrator', 'admin']]
   
+  def destroyuser
+    
+  end
 
   
   # Callback code  (NOT DRY!!!)

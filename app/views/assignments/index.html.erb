@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Assignments</h2>
-
+    <%if @assignments.empty?%>
+      <p>You Have No Assignments </p>
+<%else%>
 <table>
   <thead>
     <tr>
@@ -15,6 +17,7 @@
   </thead>
 
   <tbody>
+    <%if current_user.employee.role == "manager" || current_user.employee.role == "admin" %>
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.store_id %></td>
@@ -27,8 +30,21 @@
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <%else%>
+        <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.store_id %></td>
+        <td><%= assignment.employee_id %></td>
+        <td><%= assignment.start_date %></td>
+        <td><%= assignment.end_date %></td>
+        <td><%= assignment.pay_level %></td>
+        <td><%= link_to 'Show', assignment %></td>
+      </tr>
+      <%end%>
+<%end%>
   </tbody>
 </table>
+<%end%>
 
 <br>
 

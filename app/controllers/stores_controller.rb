@@ -18,11 +18,11 @@ class StoresController < ApplicationController
   end
   
   def active 
-    @stores = Store.active
+    @stores = Store.alphabetical.active
   end 
   
   def inactive 
-    @stores = Store.inactive
+    @stores = Store.alphabetical.inactive
   end
 
   # GET /stores/1/edit

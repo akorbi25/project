@@ -2,6 +2,7 @@
 
 <h2>Stores</h2>
 
+
 <table>
   <thead>
     <tr>
@@ -26,9 +27,11 @@
         <td><%= store.zip %></td>
         <td><%= store.phone %></td>
         <td><%= store.active %></td>
+      <%if current_user.employee.role == "admin"%>
         <td><%= link_to 'Show', store %></td>
         <td><%= link_to 'Edit', edit_store_path(store) %></td>
         <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
       </tr>
     <% end %>
   </tbody>

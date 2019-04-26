@@ -1,10 +1,14 @@
 class Assignment < ApplicationRecord
 # Callbacks
   before_create :end_previous_assignment
+  before_destroy :wait
+  after_rollback :terminateassignment
   
   # Relationships
   belongs_to :employee
   belongs_to :store
+  has_many :shifts
+
   
   # Validations
   validates_numericality_of :pay_level, only_integer: true, greater_than: 0, less_than: 7
@@ -52,5 +56,22 @@ class Assignment < ApplicationRecord
       errors.add(:store_id, "is not an active store at the creamery")
     end
   end
+  
+  def wait
+    if self.shifts.past.empty?
+      self.destroy
+    else
+        throw :abort 
+    end 
+  end
+  
+  def terminateassignment
+      self.update_attribute(:end_date, Date.current)
+      @termshifts = self.shifts.upcoming
+      @termshifts.each {|x| x.destroy} 
+
+  end 
+  
+  
 end
 

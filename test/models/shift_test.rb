@@ -89,6 +89,34 @@ end
     should "return employees chronologically" do
       assert_equal ["Ed", "Ed", "Kathryn", "Ed", "Kathryn", "Cindy", "Ed"], Shift.chronological.map{|s| s.employee.first_name}
 end
+
+#BECAUSE THE TIME ZONE IS DIFFERENT IN THE DATABASE
+  should "test start now" do
+      @edshift.start_now
+      assert_equal @edshift.start_time.strftime("%I:%M%p"), Time.now.strftime("%I:%M%p")
+      # @edshift.start_now
+      # assert_equal Time.now, @edshift.start_time
+  end
+    should "test end now" do
+      @edshift.end_now
+      assert_equal @edshift.end_time.strftime("%I:%M%p"), Time.now.strftime("%I:%M%p")
+      # @edshift.end_now
+      # assert_equal Time.now, @edshift.end_time
+  end
   
+    should "test the completed?" do
+      create_jobs
+      create_shift_jobs
+      assert true, @edshift.completed?
+      remove_jobs
+      remove_shift_jobs
+  end
+  
+  
+  should "test that new shifts's end time to three hours after the start time" do
+  @edshift2 = FactoryBot.create(:shift, assignment: @assign_ed, date: 3.days.from_now.to_date, start_time: "9:00am".to_time)
+  assert_equal "12:00pm".to_time.strftime("at %I:%M%p"), @edshift.end_time.to_time.strftime("at %I:%M%p")
+    
+  end
   end
 end

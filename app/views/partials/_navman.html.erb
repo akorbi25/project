@@ -1,0 +1,50 @@
+<!-- Dropdown Structure -->
+<ul id="dropdownstores" class="dropdown-content">
+  <li><%= link_to "List Stores", stores_path %></li>
+  <li><%= link_to "Active Stores", active_stores_path %></li>
+ <li><%= link_to "Inactive Stores", inactive_stores_path %></li>
+
+</ul>
+
+<ul id="dropdownflavor" class="dropdown-content">
+  <li><%= link_to "List Flavors", flavors_path %></li>
+  <li><%= link_to "Active Flavors", active_flavors_path %></li>
+ <li><%= link_to "Inactive Flavors", inactive_flavors_path %></li>
+
+</ul>
+
+<ul id="dropdownjob" class="dropdown-content">
+  <li><%= link_to "List Jobs", jobs_path %></li>
+  <li><%= link_to "Active Jobs", active_jobs_path %></li>
+ <li><%= link_to "Inactive Jobs", inactive_jobs_path %></li>
+
+</ul>
+
+
+
+<nav>
+ <div class="nav-wrapper">
+
+
+   <ul>
+
+<li><a class="dropdown-button" href="/home">Home</a></li>
+
+<li><a class="dropdown-button" href="/employees">Employees</a></li>
+
+<li><a class="dropdown-button" href="/assignments" >Assignments</a></li>
+
+ <li><a class="dropdown-button" href="/flavors" data-activates="dropdownflavor">Flavors<i
+class="material-icons right">arrow_drop_down</i></a></li>
+
+ <li><a class="dropdown-button" href="/jobs" data-activates="dropdownjobs">Jobs<i
+class="material-icons right">arrow_drop_down</i></a></li>
+
+ <li><a class="dropdown-button" href="/stores" data-activates="dropdownstores">Stores<i
+class="material-icons right">arrow_drop_down</i></a></li>
+
+  <li><%= link_to "Log Out", logout_path, :class => "dropdown-button" %></li>
+
+ </ul>
+ </div>
+</nav>

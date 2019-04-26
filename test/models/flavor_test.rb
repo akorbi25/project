@@ -22,10 +22,20 @@ class FlavorTest < ActiveSupport::TestCase
     
     should "return active flavors" do
       assert_equal 3, Flavor.active.size
+      #assert_equal ["Mocha", "Strawberry", "Vanilla"], Flavor.active.alphabetical.map{|s| s.name}
+
     end
     
     should "return inactive flavors" do
       assert_equal 1, Flavor.inactive.size
+      #assert_equal ["Jamoka"], Flavor.inactive.alphabetical.map{|s| s.name}
+    end
+    
+    should "make sure that flavors can't be destroyed" do
+      @vanilla.destroy
+      assert_equal 2, Flavor.active.size
+      assert_equal ["Mocha", "Strawberry"], Flavor.active.map{|s| s.name}.sort
+      assert_equal ["Jamoka", "Vanilla"], Flavor.inactive.map{|s| s.name}.sort
     end
   end
 end

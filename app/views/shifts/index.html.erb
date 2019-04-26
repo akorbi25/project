@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Shifts</h1>
-
+<h2>Shifts</h2>
+    <%if @shifts.empty?%>
+      <p>You Have No Shifts </p>
+    <%else%>
 <table>
   <thead>
     <tr>
@@ -15,6 +17,7 @@
   </thead>
 
   <tbody>
+      <%if current_user.employee.role == "manager" || current_user.employee.role == "admin" %>
     <% @shifts.each do |shift| %>
       <tr>
         <td><%= shift.assignment_id %></td>
@@ -27,9 +30,20 @@
         <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+      <%else%>
+        <% @shifts.each do |shift| %>
+        <tr>
+        <td><%= shift.assignment_id %></td>
+        <td><%= shift.date %></td>
+        <td><%= shift.start_time %></td>
+        <td><%= shift.end_time %></td>
+        <td><%= shift.notes %></td>
+        <td><%= link_to 'Show', shift %></td>
+      </tr>
+      <% end %>
+    <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
-<%= link_to 'New Shift', new_shift_path %>

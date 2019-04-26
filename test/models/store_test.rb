@@ -87,5 +87,12 @@ class StoreTest < ActiveSupport::TestCase
       assert_equal ["Hazelwood"], Store.inactive.alphabetical.map{|s| s.name}
     end
   
+  
+    should "never destroy only make inactive" do
+      assert_equal 2, Store.active.size
+      @oakland.destroy
+      assert_equal 1, Store.active.size
+
+    end
   end
 end

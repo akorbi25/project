@@ -4,7 +4,16 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    if current_user.employee.role == "admin"
+      @employees = Employee.all.alphabetical
+      #@inactive_employees = Employee.inactive.alphabetical
+    elsif current_user.employee.role == "manager"
+      @employees = Employee.all.alphabetical.select{|x| x.working? && x.current_assignment.store == current_user.employee.current_assignment.store}
+      #@inactive_employees = Employee.inactive.alphabetical.select{|x| x.working? && x.current_assignment.store == current_user.employee.current_assignment.store}
+    else
+      @employee = current_user.employee
+    end
+
     #authorize! :read, @employees
   end
 

@@ -4,6 +4,7 @@ class AssignmentTest < ActiveSupport::TestCase
   # Test relationships
    should belong_to(:employee)
    should belong_to(:store)
+  should have_many(:shifts)
 
   # # Test basic validations
   # # for pay level
@@ -119,5 +120,18 @@ class AssignmentTest < ActiveSupport::TestCase
       assert_equal 1.day.ago.to_date, @kathryn.assignments.first.end_date
       @promote_kathryn.destroy
     end
+    
+    should "not destroy assignment that has past shifts" do
+      @promote_kathryn = FactoryBot.create(:assignment, employee: @kathryn, store: @oakland, start_date: 1.day.ago.to_date, end_date: nil, pay_level: 4)
+      @edpastshift = FactoryBot.create(:shift, assignment: @promote_kathryn, date: 1.week.from_now.to_date)
+      @edpastshift.update_attribute(:date, 4.days.ago.to_date)
+      @promote_kathryn.destroy
+      assert_equal ["CMU", "CMU", "CMU", "CMU", "Oakland", "Oakland"], Assignment.by_store.map{|a| a.store.name}
+      @promote_kathryn.destroy
+      @edpastshift.destroy
+
+    end
+    
+    
   end
 end

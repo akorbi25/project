@@ -31,13 +31,24 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should "shows that users are connected to an employee who is active in the system" do
-      assert @ed.active
-      assert_not_nil @ed_user
-      @someone = FactoryBot.build(:employee)
-      assert @someone.valid?
-
+      assert_equal true, @ed.active
+      assert_equal false, @ed_user.nil?
+      @someoneinactive= FactoryBot.build(:user, employee: @ralph)
+      assert_equal true, @someoneactive.nil?
+    end
+    
+    should "test user role" do
+      assert ["employee"], @ed_user.emp_role
     end
 
+    should "delete user if emp removed" do
+        @someone= FactoryBot.build(:employee)
+        @someonesuser= FactoryBot.build(:user, employee: @someone)
+        @someone.destroy
+        assert_equal false, @someonesuser.nil?
+        #dependent delete , cascade, set null doesnt work
+
+    end
 
 
   end

@@ -1,7 +1,8 @@
 class Store < ApplicationRecord
 # Callbacks
   before_save :reformat_phone
-  
+  before_destroy :wait
+  after_rollback :be_inactive
   # Relationships
   has_many :assignments
   has_many :employees, through: :assignments  
@@ -39,6 +40,15 @@ class Store < ApplicationRecord
     phone.gsub!(/[^0-9]/,"") # strip all non-digits
     self.phone = phone       # reset self.phone to new string
   end
+  
+    def wait
+        throw :abort 
+    end
+    
+    
+    def be_inactive
+         self.update_attribute(:active, false)
+    end
 
 end
 

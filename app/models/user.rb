@@ -3,9 +3,8 @@ class User < ApplicationRecord
     has_secure_password 
     validates_uniqueness_of :email, case_sensitive: false
     validates_format_of :email, :with => /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, :message => "is not a valid format"
-    validate :employee_is_active_in_system, on: :update
-
-
+    validate :active_employee, on: :update
+  
 
   def emp_role
     return self.employee.role
@@ -13,8 +12,10 @@ class User < ApplicationRecord
   
   private
 
-  def employee_is_active_in_system
-    is_active_in_system(:employee)
+  def active_employee?
+      if !self.employee.active
+        throw :abort
+      end
   end
   
 end

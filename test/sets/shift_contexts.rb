@@ -1,29 +1,29 @@
 module Contexts
   module ShiftContexts
     def create_shifts
-      create_upcoming_shifts
-      create_past_shifts
+      create_upcomingShifts
+      create_pastShifts
     end
 
     def remove_shifts
-      remove_upcoming_shifts
-      remove_past_shifts
+      remove_upcomingShifts
+      remove_pastShifts
     end
 
-    def create_upcoming_shifts
+    def create_upcomingShifts
         #puts @ed.first_name
         #puts @cmu.name
-      @assignment1    = FactoryBot.create(:assignment, employee: @ed, store: @cmu, start_date: 1.month.ago.to_date, end_date: nil, pay_level: 2)
+      @assignment1 = FactoryBot.create(:assignment, employee: @ed, store: @cmu, start_date: 1.month.ago.to_date, end_date: nil, pay_level: 2)
      #puts @assign_ed_1.pay_level
-      @edshift      = FactoryBot.create(:shift, assignment: @assignment1)
+      @edshift  = FactoryBot.create(:shift, assignment: @assignment1)
      #puts @edshift.date
-      @edshift2      = FactoryBot.create(:shift, assignment: @assignment1, date: 3.days.from_now.to_date)
+      @edshift2 = FactoryBot.create(:shift, assignment: @assignment1, date: 3.days.from_now.to_date)
       #puts @edshift2.date
       @kathrynshift = FactoryBot.create(:shift, assignment: @assign_kathryn)
-      @cindyshift   = FactoryBot.create(:shift, assignment: @assign_cindy, date: 1.day.from_now.to_date)
+      @cindyshift = FactoryBot.create(:shift, assignment: @assign_cindy, date: 1.day.from_now.to_date)
     end
 
-    def remove_upcoming_shifts
+    def remove_upcomingShifts
       @assignment1.destroy
       @edshift.destroy     
       @edshift2.destroy
@@ -31,8 +31,8 @@ module Contexts
       @cindyshift.destroy
     end
 
-    def create_past_shifts
-      @assignment2  = FactoryBot.create(:assignment, employee: @ed, store: @cmu, start_date: 1.month.ago.to_date, end_date: nil, pay_level: 2)
+    def create_pastShifts
+      @assignment2= FactoryBot.create(:assignment, employee: @ed, store: @cmu, start_date: 1.month.ago.to_date, end_date: nil, pay_level: 2)
       @edpastshift = FactoryBot.create(:shift, assignment: @assignment2, date: 1.week.from_now.to_date)
       # #puts @edpastshift.date
       @edpastshift.update_attribute(:date, 4.days.ago.to_date)
@@ -43,7 +43,7 @@ module Contexts
       @kathrynpastshift.update_attribute(:date, 1.day.ago.to_date)
     end
 
-    def remove_past_shifts
+    def remove_pastShifts
       @assignment2.destroy
       @edpastshift.destroy
       @edpastshift2.destroy

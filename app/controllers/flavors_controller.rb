@@ -16,7 +16,15 @@ class FlavorsController < ApplicationController
   def new
     @flavor = Flavor.new
   end
-
+  
+  def active 
+    @flavors = Flavor.alphabetical.active
+  end 
+  
+  def inactive 
+    @flavors = Flavor.alphabetical.inactive
+  end
+  
   # GET /flavors/1/edit
   def edit
   end

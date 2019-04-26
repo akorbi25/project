@@ -3,7 +3,7 @@ module Contexts
     # Context for flavors 
     def create_flavors
       @vanilla  = FactoryBot.create(:flavor)
-      @strawberry    = FactoryBot.create(:flavor, name: "Strawberry")
+      @strawberry = FactoryBot.create(:flavor, name: "Strawberry")
       @mocha = FactoryBot.create(:flavor, name: "Mocha")
       @jamoka  = FactoryBot.create(:flavor, name: "Jamoka", active: false)
     end

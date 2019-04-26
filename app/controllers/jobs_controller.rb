@@ -20,7 +20,14 @@ class JobsController < ApplicationController
   # GET /jobs/1/edit
   def edit
   end
-
+  
+  def active 
+    @jobs = Job.alphabetical.active
+  end 
+  
+  def inactive 
+    @jobs = Job.alphabetical.inactive
+  end
   # POST /jobs
   # POST /jobs.json
   def create

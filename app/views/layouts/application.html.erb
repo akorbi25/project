@@ -10,9 +10,20 @@
   </head>
 
 <body>
-
-   <%= render partial: 'partials/nav' %>
-
+    <%unless logged_in?%>
+       <%= render partial: 'partials/navguest' %>
+    <%else%>
+    <% if current_user.employee.role == "employee"%>
+       <%= render partial: 'partials/navemp' %>
+    <% elsif current_user.employee.role == "manager"%>
+           <%= render partial: 'partials/navman' %>
+    <% elsif current_user.employee.role == "admin"%>
+       <%= render partial: 'partials/navadmin' %>
+    <% else %>
+   <%= render partial: 'partials/navguest' %>
+   
+   <%end%>
+   <%end%>
 <br />
  <div class="wrapper" >
 

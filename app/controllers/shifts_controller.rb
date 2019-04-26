@@ -4,7 +4,13 @@ class ShiftsController < ApplicationController
   # GET /shifts
   # GET /shifts.json
   def index
+    if current_user.employee.role == "admin"
     @shifts = Shift.all
+    elsif current_user.employee.role == "manager"
+    @shifts = Shift.chronological.select{|x| x.assignment.store == current_user.employee.current_assignment.store}
+    else
+    @shifts = Shift.for_employee(current_user.employee.id)
+    end
   end
 
   # GET /shifts/1

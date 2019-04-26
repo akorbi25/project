@@ -1,4 +1,5 @@
 class Shift < ApplicationRecord
+    before_create :newshifts
     belongs_to :assignment
     has_many :shift_jobs
     has_many :jobs, through: :shift_jobs
@@ -28,22 +29,26 @@ class Shift < ApplicationRecord
     end
     
     def start_now
-        self.update_attribute(:start_time, Time.current)
+        self.update_attribute(:start_time, Time.zone.now)
     end
     
     def end_now
-        self.update_attribute(:end_time, Time.current)
+        self.update_attribute(:end_time, Time.zone.now)
     end
+'new shifts should have a callback which automatically sets the end time
+to three hours after the start time'
 
-
+  def newshifts
+    self.end_time= self.start_time+ (3*3600)
+  end
   private
   def assignment_start_date
     @assignment_start_date = self.assignment.start_date.to_date
   end
   
   def assignment_must_be_current
-    unless self.assignment.nil? || self.assignment.end_date.nil?
-      errors.add(:assignment_id, "is not a current assignment at the creamery")
+    if self.assignment.nil? || self.assignment.end_date.nil?
+        throw :abort 
     end
   end    
  
