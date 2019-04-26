@@ -1,5 +1,6 @@
 class Shift < ApplicationRecord
     before_create :newshifts
+    # before_destroy :wait
     belongs_to :assignment
     has_many :shift_jobs
     has_many :jobs, through: :shift_jobs
@@ -9,7 +10,7 @@ class Shift < ApplicationRecord
     validates_time :start_time
     validates_time :end_time, after: :start_time, allow_blank: true    
     validates_date :date, on_or_after: lambda { :assignment_start_date }, on_or_before_message: "must be on or after the start of the assignment"
-    validate :assignment_must_be_current
+    validate :currentassignments
    
    
     scope :completed, -> { joins(:shift_jobs).group(:shift_id) }
@@ -46,10 +47,16 @@ to three hours after the start time'
     @assignment_start_date = self.assignment.start_date.to_date
   end
   
-  def assignment_must_be_current
+  def currentassignments
     if self.assignment.nil? || self.assignment.end_date.nil?
         throw :abort 
     end
   end    
+  
+  # def wait 
+  #   if self.date == date.current
+  #     self.destroy
+  #   end
+  # end
  
 end

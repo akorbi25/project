@@ -69,7 +69,7 @@ class Assignment < ApplicationRecord
       self.update_attribute(:end_date, Date.current)
       @termshifts = self.shifts.upcoming
       @termshifts.each {|x| x.destroy} 
-
+      
   end 
   
   

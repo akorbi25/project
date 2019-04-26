@@ -2,12 +2,15 @@ class Employee < ApplicationRecord
  # Callbacks
   before_save :reformat_phone
   before_validation :reformat_ssn
+  # before_destroy :check
+  # after_rollback :be_inactive
   
   # Relationships
   has_many :assignments
   has_many :stores, through: :assignments
   has_one :user, dependent: :destroy
   accepts_nested_attributes_for :user
+  has_many :shifts, through: :assignments
   # Validations
   validates_presence_of :first_name, :last_name, :date_of_birth, :ssn, :role
   validates_date :date_of_birth, on_or_before: lambda { 14.years.ago }, on_or_before_message: "must be at least 14 years old"
@@ -54,9 +57,9 @@ class Employee < ApplicationRecord
   # Misc Constants
   ROLES_LIST = [['Employee', 'employee'],['Manager', 'manager'],['Administrator', 'admin']]
   
-  def destroyuser
+  # def destroyuser
     
-  end
+  # end
 
   
   # Callback code  (NOT DRY!!!)
@@ -72,5 +75,27 @@ class Employee < ApplicationRecord
      ssn.gsub!(/[^0-9]/,"")   # strip all non-digits
      self.ssn = ssn           # reset self.ssn to new string
    end
-end
+   
+  # def check
+  #   if self.shifts.past.empty?
+  #     self.destroy
+  #     self.current_assignment.delete unless self.current_assignment.nil?
+  #   else
+  #       throw :abort 
+  #   end
+  # end
+  
+  # def be_inactive
+  #   self.update_attribute(:active, false)
+  #     if !self.current_assignment.nil?
+  #     @termassign = self.current_assignment
+  #     @termassign.each {|x| x.update_attribute(:end_date, Date.current)} 
+  #     @termshift = self.shifts.upcoming
+  #     @termshift.each {|x| x.destroy} 
+  #   end
+  # end 
+    
+
+    end
+
 

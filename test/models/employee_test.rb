@@ -158,5 +158,13 @@ class EmployeeTest < ActiveSupport::TestCase
       assert_equal 17, @cindy.age
       assert_equal 30, @kathryn.age
     end
+    
+    
+  #   should "check if can be deleted" do 
+  #     @nopastshifts = FactoryBot(:employee)
+  #     assert_equal 6, Employee.active.size
+  #     @nopastshifts.destroy
+  #     assert_equal 2, Employee.inactive.size
+  # end 
   end
 end
