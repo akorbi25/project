@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Assignments</h2>
-    <%if @assignments.empty?%>
+    <%if @assignments && @assignments.empty?%>
       <p>You Have No Assignments </p>
 <%else%>
 <table>
@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <%if current_user.employee.role == "manager" || current_user.employee.role == "admin" %>
+    <%if @assignments && current_user.employee.role == "manager" || current_user.employee.role == "admin" %>
     <% @assignments.each do |assignment| %>
       <tr>
         <td><%= assignment.store_id %></td>

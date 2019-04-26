@@ -159,6 +159,9 @@ class EmployeeTest < ActiveSupport::TestCase
       assert_equal 30, @kathryn.age
     end
     
+    should "test hasassignments" do 
+      assert true, @ed.hasassignments
+  end
     
   #   should "check if can be deleted" do 
   #     @nopastshifts = FactoryBot(:employee)

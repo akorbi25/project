@@ -16,21 +16,21 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       if (user.emp_role == "employee")
-        redirect_to home_path , notice: "Logged in!"
+        redirect_to home_path 
       elsif (user.emp_role == "manager")
-        redirect_to home_path , notice: "Logged in!"
+        redirect_to home_path 
       elsif (user.emp_role == "admin" )
-        redirect_to home_path , notice: "Logged in!"
+        redirect_to home_path 
       else
         flash.now[:alert] = "Email or password is invalid"
-        render "new"
+        render "login"
       end
     end
   end
   
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    redirect_to root_url
   end
   
 end

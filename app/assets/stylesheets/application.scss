@@ -51,8 +51,11 @@ table { border-collapse: collapse;
 }
     
 .wrapper {
-	background: #fcf1d4;
+	background: #d6e6ff;
 	padding: 30px;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
   opacity: 0.9;
 }
 
@@ -60,8 +63,9 @@ table { border-collapse: collapse;
 
 body {
   margin: 0;
-  background: url("https://previews.123rf.com/images/annagolant/annagolant1707/annagolant170700096/82186694-seamless-pattern-with-ice-cream-cute-background-in-vintage-retro-style-seamless-vector-illustration-.jpg");
-
+  /*background: url("https://previews.123rf.com/images/annagolant/annagolant1707/annagolant170700096/82186694-seamless-pattern-with-ice-cream-cute-background-in-vintage-retro-style-seamless-vector-illustration-.jpg");
+*/
+background-color: #a5c8ff ;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -73,6 +77,11 @@ p {
     font-family: "Comic Sans MS", cursive, sans-serif;
 
     color: #6D6968;
+}
+.notice {
+   font-size: 25px;
+  color: #d12368;
+  margin-top: auto; 
 }
 
 // ul {

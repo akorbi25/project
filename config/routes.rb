@@ -37,6 +37,13 @@ Rails.application.routes.draw do
     get 'past' => 'assignments#past', as: :past
 
 
+    get 'for_past_days' => 'shifts#for_past_days', as: :for_past_days
+    get 'for_next_days' => 'shifts#for_next_days', as: :for_next_days
+    get 'past' => 'shifts#past', as: :past_shifts
+    get 'upcoming' => 'shifts#upcoming', as: :upcoming
+    get 'completed' => 'shifts#completed', as: :completed
+    get 'incomplete' => 'shifts#incomplete', as: :incomplete
+
 
   get 'login' => 'sessions#new', as: :login
   get 'logout' => 'sessions#destroy', as: :logout

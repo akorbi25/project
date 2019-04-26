@@ -20,11 +20,12 @@
     <%= form.label :last_name %>
     <%= form.text_field :last_name %>
   </div>
-
+<% if current_user && current_user.employee.role == "admin"%>
   <div class="field">
     <%= form.label :ssn %>
     <%= form.text_field :ssn %>
   </div>
+<%end%>
 
  <div class="field">
  <%= form.label :date_of_birth %>
@@ -41,11 +42,6 @@
     <%= form.select :role, [ 'employee', 'manager', 'admin' ], :prompt => 'Select One' %>
 
   </div>
-
-  <div class="field">
-    <%= form.check_box :active %>
-    <%= form.label :active %>
-  </div>
   
   <%= form.fields_for :user do |field|%>
     <%= field.label "Email" %>
@@ -55,6 +51,12 @@
     <%= field.password_field :password %>
 
   <% end %>
+  
+  <div class="field">
+    <%= form.check_box :active %>
+    <%= form.label :active %>
+  </div>
+  
   </br>
 
   <div class="button">

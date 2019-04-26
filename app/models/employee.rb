@@ -11,6 +11,8 @@ class Employee < ApplicationRecord
   has_one :user, dependent: :destroy
   accepts_nested_attributes_for :user
   has_many :shifts, through: :assignments
+  
+  
   # Validations
   validates_presence_of :first_name, :last_name, :date_of_birth, :ssn, :role
   validates_date :date_of_birth, on_or_before: lambda { 14.years.ago }, on_or_before_message: "must be at least 14 years old"
@@ -50,6 +52,9 @@ class Employee < ApplicationRecord
     date_of_birth < 18.years.ago.to_date
   end
   
+  def hasassignments
+    !(self.current_assignment.nil?)
+  end
   def age
     (Time.now.to_s(:number).to_i - date_of_birth.to_time.to_s(:number).to_i)/10e9.to_i
   end

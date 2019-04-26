@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Employees</h2>
-
+<%if @employees && @employees.empty?%>
+<p> There are no employees</p>
+<%else%>
 <table>
   <thead>
     <tr>
@@ -17,7 +19,7 @@
   </thead>
 
   <tbody>
-    <%if current_user.employee.role == "manager" or current_user.employee.role == "admin" %>
+    <%if @employees && current_user.employee.role == "manager" or current_user.employee.role == "admin" %>
     <% @employees.each do |employee| %>
       <tr>
         <td><%= employee.first_name %></td>
@@ -47,5 +49,6 @@
 
   </tbody>
 </table>
+<%end%>
 <br>
 

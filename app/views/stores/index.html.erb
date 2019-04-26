@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Stores</h2>
-
-
+<%if @stores.empty?%>
+<p> there are no Stores</p>
+<%else%>
 <table>
   <thead>
     <tr>
@@ -36,6 +37,6 @@
     <% end %>
   </tbody>
 </table>
-
+<%end%>
 <br>
 

@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
+  #authorize_resource
   # GET /employees
   # GET /employees.json
   def index
@@ -8,8 +8,9 @@ class EmployeesController < ApplicationController
       @employees = Employee.all.alphabetical
       #@inactive_employees = Employee.inactive.alphabetical
     elsif current_user.employee.role == "manager"
-      @employees = Employee.all.alphabetical.select{|x| x.working? && x.current_assignment.store == current_user.employee.current_assignment.store}
-      #@inactive_employees = Employee.inactive.alphabetical.select{|x| x.working? && x.current_assignment.store == current_user.employee.current_assignment.store}
+          @employees = Employee.all.alphabetical
+      #@employees = Employee.all.alphabetical.select{|x| x.hasassignments && x.current_assignment.store == current_user.employee.current_assignment.store}
+        #@inactive_employees = Employee.inactive.alphabetical.select{|x| x.working? && x.current_assignment.store == current_user.employee.current_assignment.store}
     else
       @employee = current_user.employee
     end

@@ -6,8 +6,10 @@ class AssignmentsController < ApplicationController
   def index
     if current_user.employee.role == "admin"
     @assignments = Assignment.all
-    elsif current_user.employee.role == "manager"
-    @assignments = Assignment.for_store(current_user.employee.current_assignment.store.id)
+    elsif current_user.employee.role == "manager" 
+         @assignments = Assignment.all
+        # puts current_user.employee.current_assignment.store.id
+      #@assignments = Assignment.for_store(current_user.employee.current_assignment.store.id)
     else
     @assignments = current_user.employee.assignments
     end
@@ -21,6 +23,14 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new
   def new
     @assignment = Assignment.new
+  end
+  
+  
+    def past_assignments
+    @assignments = Assignment.past
+  end
+    def current
+    @assignments = Assignment.current
   end
 
   # GET /assignments/1/edit

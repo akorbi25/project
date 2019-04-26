@@ -22,6 +22,26 @@ class ShiftsController < ApplicationController
   def new
     @shift = Shift.new
   end
+  ######
+   def upcoming
+    @shifts = Shift.upcoming
+  end
+   def past
+    @shifts = Shift.past
+  end
+   def for_next_days
+    @shifts = Shift.for_next_days
+  end
+   def for_past_days
+    @shifts = Shift.for_past_days
+  end
+   def completed
+    @shifts = Shift.completed
+  end
+   def incomplete
+    @shifts = Shift.incomplete
+  end
+  #####
 
   # GET /shifts/1/edit
   def edit
